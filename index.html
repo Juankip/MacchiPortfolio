@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juan Sebastián Macchi - Portafolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px 0;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 20px;
+            min-height: 120px; /* Aumentar altura para la foto */
+            border-bottom: #77aaff 3px solid;
+            text-align: center;
+            display: flex; /* Para alinear foto y texto */
+            flex-direction: column; /* Apilar elementos en pantallas pequeñas */
+            align-items: center; /* Centrar elementos */
+            justify-content: center; /* Espaciar elementos verticalmente */
+        }
+        header img {
+            width: 100px; /* Ajusta el tamaño de la foto */
+            height: 100px;
+            border-radius: 50%; /* Para hacerla circular */
+            object-fit: cover; /* Evita distorsión de la imagen */
+            margin-bottom: 10px; /* Espacio entre la foto y el texto */
+            border: 3px solid #fff; /* Borde blanco alrededor de la foto */
+        }
+        header h1 {
+            margin: 0;
+            padding-bottom: 5px;
+        }
+        header .contact-info { /* Nuevo contenedor para info de contacto y LinkedIn */
+            margin: 0;
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap; /* Para que los elementos se envuelvan en pantallas pequeñas */
+        }
+        header .contact-info p {
+            margin: 0 10px; /* Espacio entre los elementos de contacto */
+        }
+        .linkedin-logo { /* Estilo para el logo de LinkedIn */
+            width: 24px; /* Tamaño del logo */
+            height: 24px;
+            vertical-align: middle; /* Alinea el logo con el texto */
+            margin-left: 5px; /* Pequeño espacio a la izquierda del texto si lo pones después */
+        }
+        .main-content {
+            padding: 20px;
+            background: #fff;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        section {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        section:last-child {
+            border-bottom: none;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #77aaff;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            margin-bottom: 10px;
+            display: flex; /* Para alinear el texto del curso y el botón */
+            align-items: center;
+            flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+        }
+        .experience-item, .education-item, .course-item, .project-item {
+            margin-bottom: 15px;
+        }
+        .experience-item h3, .education-item h3, .course-item h3, .project-item h3 {
+            margin: 0;
+            color: #555;
+        }
+        .experience-item p, .education-item p, .course-item p, .project-item p {
+            margin: 5px 0;
+        }
+        .skills ul {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .skills ul li {
+            background: #eee;
+            padding: 8px 12px;
+            margin: 5px;
+            border-radius: 5px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: #fff;
+            margin-top: 20px;
+            border-top: #77aaff 3px solid;
+        }
+        /* Estilos para el botón de certificado */
+        .certificate-button {
+            background-color: #fff; /* Fondo blanco */
+            color: #007bff; /* Texto azul */
+            padding: 5px 10px;
+            border: 1px solid #007bff; /* Borde azul */
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8em;
+            margin-left: 5px; /* Valor pequeño en px para una mínima separación */
+            text-decoration: none; /* Quitar el subrayado de los enlaces */
+            display: inline-block; /* Para que padding y margin funcionen como en un botón */
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .certificate-button:hover {
+            background-color: #007bff; /* Fondo azul al pasar el ratón */
+            color: white; /* Texto blanco al pasar el ratón */
+        }
+
+        /* Nuevos estilos para el botón de proyecto */
+        .project-button {
+            background-color: #007bff;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8em;
+            margin-left: 5px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+        .project-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Estilos para el visor de PDF */
+        #pdfViewerContainer {
+            display: none; /* Oculto por defecto */
+            position: fixed; /* Ocupa toda la ventana */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9); /* Fondo semi-transparente oscuro */
+            z-index: 1000; /* Asegura que esté por encima de todo */
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        #pdfViewer {
+            width: 90%; /* Ancho del visor de PDF */
+            height: 90%; /* Altura del visor de PDF */
+            border: none;
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+        #backButton {
+            background-color: #77aaff; /* Color del botón de volver */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+        #backButton:hover {
+            background-color: #5588cc;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="./Multimedia/Foto CV.jpg" alt="Foto de Juan Sebastián Macchi">
+            <h1>JUAN SEBASTIÁN MACCHI</h1>
+            <div class="contact-info">
+                <p>Email: juasemacchi@gmail.com | Cel: (011) 3559-5106</p>
+                <a href="https://www.linkedin.com/in/juan-sebasti%C3%A1n-macchi-441191230/" target="_blank" rel="noopener noreferrer">
+                    <img src="./Multimedia/Logo_linkedin.png" alt="LinkedIn Logo" class="linkedin-logo">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container main-content" id="portfolioContent">
+        <section id="about">
+            <h2>Sobre Mí</h2>
+            <p>
+                Como estudiante de Análisis en Sistemas, soy una persona altamente motivada y autodidacta con fuertes habilidades de pensamiento analítico y lógico. Soy atento al detalle y poseo excelentes habilidades de escucha activa.
+            </p>
+        </section>
+
+        <section id="education">
+            <h2>Educación</h2>
+            <div class="education-item">
+                <h3>INSTITUTO DE FORMACIÓN TÉCNICA N°11</h3>
+                <p>Análisis en Sistemas, 2024 - actualidad </p>
+            </div>
+            <div class="education-item">
+                <h3>INSTITUTO SANTA CATALINA DE ALEJANDRÍA</h3>
+                <p>Bachiller en Administración de Empresas, 2022 </p>
+            </div>
+        </section>
+
+        <section id="courses">
+            <h2>Cursos y Certificaciones</h2>
+            <div class="course-item">
+                <h3>AGENCIA DE HABILIDADES PARA EL FUTURO</h3>
+                <ul>
+                    <li>
+                        <span>Programación Inicial en Python, 2024</span>
+                        <button class="certificate-button" data-pdf="./Multimedia/Certificados/Diploma_CAC.pdf">Ver Certificado</button>
+                    </li>
+                    <li>
+                        <span>Inglés, 2024 - 2025</span>
+                        <button class="certificate-button" data-pdf="./Multimedia/Certificados/AgHa_Ingles.pdf">Ver Certificado</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="course-item">
+                <h3>SANTANDER OPEN ACADEMY</h3>
+                <ul>
+                    <li>
+                        <span>Business English, 2024</span>
+                        <button class="certificate-button" data-pdf="./Multimedia/Certificados/SOA_Ingles.pdf">Ver Certificado</button>
+                    </li>
+                    <li>
+                        <span>Excel, 2024</span>
+                        <button class="certificate-button" data-pdf="./Multimedia/Certificados/SOA_Excel.pdf">Ver Certificado</button>
+                    </li>
+                    <li>
+                        <span>Google: Inteligencia Artificial y productividad, 2025</span>
+                        <button class="certificate-button" data-pdf="./Multimedia/Certificados/SOA_Gemini.pdf">Ver Certificado</button>
+                    </li>
+                    <li>
+                        <span>Internet de las Cosas, 2025</span>
+                        <button class="certificate-button" data-pdf="./Multimedia/Certificados/SOA_IoT.pdf">Ver Certificado</button>
+                    </li>
+                    <li>
+                        <span>Programador en Python, 2025</span>
+                        <button class="certificate-button" data-pdf="./Multimedia/Certificados/SOA_Python.pdf">Ver Certificado</button>
+                    </li>
+                    <li>
+                        <span>E-Commerce y gestión comercial, 2025</span>
+                        <button class="certificate-button" data-pdf="./Multimedia/Certificados/SOA_Ecommerce.pdf">Ver Certificado</button>
+                    </li>
+                    <li>
+                        <span>Power BI, 2025</span>
+                        <button class="certificate-button" data-pdf="./Multimedia/Certificados/SOA_PowerBI.pdf">Ver Certificado</button>
+                    </li>
+                    <li>
+                        <span>Colaboración y Comunicación Estratégica, 2025</span>
+                        <button class="certificate-button" data-pdf="./Multimedia/Certificados/SOA_CommEstrat.pdf">Ver Certificado</button>
+                    </li>
+                    <li>
+                        <span>Introducción al comportamiento del consumidor, 2025</span>
+                        <button class="certificate-button" data-pdf="./Multimedia/Certificados/SOA_Psico.pdf">Ver Certificado</button>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Experiencia Laboral</h2>
+            <div class="experience-item">
+                <h3>MANPOWER GROUP - Digitador</h3>
+                <p>Oct. 2024 - Nov. 2024 </p>
+                <ul>
+                    <li>Gestión de datos </li>
+                    <li>Mecanografía </li>
+                    <li>Análisis de datos </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Proyectos</h2>
+            <div class="project-item">
+                <h3>La Verdulería de Teto</h3>
+                <ul>
+                    <li>
+                        <span>Proyecto HTML/CSS/JS de una página web de una verdulería ficticia.</span>
+                        <a href="https://juankip.github.io/La-verduleria-de-teto/" target="_blank" class="project-button">Ver Proyecto</a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Habilidades</h2>
+            <div class="skills">
+                <h3>Habilidades Técnicas:</h3>
+                <ul>
+                    <li>Microsoft Office – Avanzado (Word, Excel, Power Point) </li>
+                    <li>C++ </li>
+                    <li>Python </li>
+                    <li>MySQL </li>
+                    <li>HTML </li>
+                    <li>CSS </li>
+                    <li>JavaScript </li>
+                </ul>
+                <h3>Habilidades Personales:</h3>
+                <ul>
+                    <li>Atención al detalle </li>
+                    <li>Lógica </li>
+                    <li>Pensamiento analítico </li>
+                    <li>Autodidacta </li>
+                    <li>Escucha activa </li>
+                </ul>
+                <h3>Idiomas:</h3>
+                <ul>
+                    <li>Inglés - C1 </li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Juan Sebastián Macchi. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <div id="pdfViewerContainer" style="display: none;">
+        <iframe id="pdfViewer" src="" frameborder="0"></iframe>
+        <button id="backButton">Volver al Portafolio</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.certificate-button');
+            const pdfViewerContainer = document.getElementById('pdfViewerContainer');
+            const pdfViewer = document.getElementById('pdfViewer');
+            const backButton = document.getElementById('backButton');
+            const portfolioContent = document.getElementById('portfolioContent');
+            const header = document.querySelector('header');
+            const footer = document.querySelector('footer');
+
+            let scrollPosition = 0; // Variable para guardar la posición de desplazamiento
+
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    scrollPosition = window.scrollY; // Guarda la posición actual de desplazamiento
+                    const pdfPath = this.dataset.pdf; // Obtener la ruta del PDF
+                    pdfViewer.src = pdfPath; // Cargar el PDF en el iframe
+
+                    // Ocultar el contenido del portafolio y mostrar el visor de PDF
+                    portfolioContent.style.display = 'none';
+                    header.style.display = 'none';
+                    footer.style.display = 'none';
+                    pdfViewerContainer.style.display = 'flex'; // Usar flex para centrar
+                });
+            });
+
+            backButton.addEventListener('click', function() {
+                // Ocultar el visor de PDF y mostrar el contenido del portafolio
+                pdfViewerContainer.style.display = 'none';
+                pdfViewer.src = ''; // Limpiar el iframe para liberar recursos
+                portfolioContent.style.display = 'block';
+                header.style.display = 'flex'; // Restaurar display original del header
+                footer.style.display = 'block';
+
+                window.scrollTo(0, scrollPosition); // Vuelve a la posición guardada
+            });
+        });
+    </script>
+</body>
+</html>
