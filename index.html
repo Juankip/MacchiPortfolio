@@ -23,42 +23,42 @@
             background: #333;
             color: #fff;
             padding-top: 20px;
-            min-height: 120px; /* Aumentar altura para la foto */
+            min-height: 120px;
             border-bottom: #77aaff 3px solid;
             text-align: center;
-            display: flex; /* Para alinear foto y texto */
-            flex-direction: column; /* Apilar elementos en pantallas pequeñas */
-            align-items: center; /* Centrar elementos */
-            justify-content: center; /* Espaciar elementos verticalmente */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
         header img {
-            width: 100px; /* Ajusta el tamaño de la foto */
+            width: 100px;
             height: 100px;
-            border-radius: 50%; /* Para hacerla circular */
-            object-fit: cover; /* Evita distorsión de la imagen */
-            margin-bottom: 10px; /* Espacio entre la foto y el texto */
-            border: 3px solid #fff; /* Borde blanco alrededor de la foto */
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border: 3px solid #fff;
         }
         header h1 {
             margin: 0;
             padding-bottom: 5px;
         }
-        header .contact-info { /* Nuevo contenedor para info de contacto y LinkedIn */
+        header .contact-info {
             margin: 0;
             padding-bottom: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-wrap: wrap; /* Para que los elementos se envuelvan en pantallas pequeñas */
+            flex-wrap: wrap;
         }
         header .contact-info p {
-            margin: 0 10px; /* Espacio entre los elementos de contacto */
+            margin: 0 10px;
         }
-        .linkedin-logo { /* Estilo para el logo de LinkedIn */
-            width: 24px; /* Tamaño del logo */
+        .linkedin-logo {
+            width: 24px;
             height: 24px;
-            vertical-align: middle; /* Alinea el logo con el texto */
-            margin-left: 5px; /* Pequeño espacio a la izquierda del texto si lo pones después */
+            vertical-align: middle;
+            margin-left: 5px;
         }
         .main-content {
             padding: 20px;
@@ -87,9 +87,9 @@
         }
         ul li {
             margin-bottom: 10px;
-            display: flex; /* Para alinear el texto del curso y el botón */
+            display: flex;
             align-items: center;
-            flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+            flex-wrap: wrap;
         }
         .experience-item, .education-item, .course-item, .project-item {
             margin-bottom: 15px;
@@ -119,26 +119,23 @@
             margin-top: 20px;
             border-top: #77aaff 3px solid;
         }
-        /* Estilos para el botón de certificado */
         .certificate-button {
-            background-color: #fff; /* Fondo blanco */
-            color: #007bff; /* Texto azul */
+            background-color: #fff;
+            color: #007bff;
             padding: 5px 10px;
-            border: 1px solid #007bff; /* Borde azul */
+            border: 1px solid #007bff;
             border-radius: 4px;
             cursor: pointer;
             font-size: 0.8em;
-            margin-left: 5px; /* Valor pequeño en px para una mínima separación */
-            text-decoration: none; /* Quitar el subrayado de los enlaces */
-            display: inline-block; /* Para que padding y margin funcionen como en un botón */
+            margin-left: 5px;
+            text-decoration: none;
+            display: inline-block;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
         .certificate-button:hover {
-            background-color: #007bff; /* Fondo azul al pasar el ratón */
-            color: white; /* Texto blanco al pasar el ratón */
+            background-color: #007bff;
+            color: white;
         }
-
-        /* Nuevos estilos para el botón de proyecto */
         .project-button {
             background-color: #007bff;
             color: white;
@@ -155,17 +152,15 @@
         .project-button:hover {
             background-color: #0056b3;
         }
-
-        /* Estilos para el visor de PDF */
         #pdfViewerContainer {
-            display: none; /* Oculto por defecto */
-            position: fixed; /* Ocupa toda la ventana */
+            display: none;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9); /* Fondo semi-transparente oscuro */
-            z-index: 1000; /* Asegura que esté por encima de todo */
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
             padding: 20px;
             box-sizing: border-box;
             display: flex;
@@ -174,14 +169,14 @@
             justify-content: center;
         }
         #pdfViewer {
-            width: 90%; /* Ancho del visor de PDF */
-            height: 90%; /* Altura del visor de PDF */
+            width: 90%;
+            height: 90%;
             border: none;
             background-color: #fff;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
         }
         #backButton {
-            background-color: #77aaff; /* Color del botón de volver */
+            background-color: #77aaff;
             color: white;
             padding: 10px 20px;
             border: none;
@@ -243,6 +238,10 @@
                         <span>Inglés, 2024 - 2025</span>
                         <button class="certificate-button" data-pdf="./Multimedia/Certificados/AgHa_Ingles.pdf">Ver Certificado</button>
                     </li>
+                    <li>
+                        <span>Front-EndJS, 2025</span>
+                        <button class="certificate-button" data-pdf="./Multimedia/Certificados/Certificado_Front_EndJS.pdf">Ver Certificado</button>
+                    </li>
                 </ul>
             </div>
             <div class="course-item">
@@ -283,6 +282,19 @@
                     <li>
                         <span>Introducción al comportamiento del consumidor, 2025</span>
                         <button class="certificate-button" data-pdf="./Multimedia/Certificados/SOA_Psico.pdf">Ver Certificado</button>
+                    </li>
+                    <li>
+                        <span>Habilidades para el Siglo XXI, 2025</span>
+                        <button class="certificate-button" data-pdf="./Multimedia/Certificados/curso_santander___habilidades_digitales_para_el_siglo_xxi.pdf">Ver Certificado</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="course-item">
+                <h3>SANTANDER POTENCIAR ARGENTINA</h3>
+                <ul>
+                    <li>
+                        <span>Introducción a la Programación en Cobol, 2025</span>
+                        <button class="certificate-button" data-pdf="./Multimedia/Certificados/Certificado_Cobol.pdf">Ver Certificado</button>
                     </li>
                 </ul>
             </div>
@@ -346,6 +358,7 @@
     <footer>
         <div class="container">
             <p>&copy; 2025 Juan Sebastián Macchi. Todos los derechos reservados.</p>
+            <p>Última actualización: 22 de agosto de 2025, 21:14</p>
         </div>
     </footer>
 
@@ -364,31 +377,29 @@
             const header = document.querySelector('header');
             const footer = document.querySelector('footer');
 
-            let scrollPosition = 0; // Variable para guardar la posición de desplazamiento
+            let scrollPosition = 0;
 
             buttons.forEach(button => {
                 button.addEventListener('click', function() {
-                    scrollPosition = window.scrollY; // Guarda la posición actual de desplazamiento
-                    const pdfPath = this.dataset.pdf; // Obtener la ruta del PDF
-                    pdfViewer.src = pdfPath; // Cargar el PDF en el iframe
+                    scrollPosition = window.scrollY;
+                    const pdfPath = this.dataset.pdf;
+                    pdfViewer.src = pdfPath;
 
-                    // Ocultar el contenido del portafolio y mostrar el visor de PDF
                     portfolioContent.style.display = 'none';
                     header.style.display = 'none';
                     footer.style.display = 'none';
-                    pdfViewerContainer.style.display = 'flex'; // Usar flex para centrar
+                    pdfViewerContainer.style.display = 'flex';
                 });
             });
 
             backButton.addEventListener('click', function() {
-                // Ocultar el visor de PDF y mostrar el contenido del portafolio
                 pdfViewerContainer.style.display = 'none';
-                pdfViewer.src = ''; // Limpiar el iframe para liberar recursos
+                pdfViewer.src = '';
                 portfolioContent.style.display = 'block';
-                header.style.display = 'flex'; // Restaurar display original del header
+                header.style.display = 'flex';
                 footer.style.display = 'block';
 
-                window.scrollTo(0, scrollPosition); // Vuelve a la posición guardada
+                window.scrollTo(0, scrollPosition);
             });
         });
     </script>
